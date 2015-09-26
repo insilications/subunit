@@ -4,7 +4,7 @@
 #
 Name     : subunit
 Version  : 1.1.0
-Release  : 19
+Release  : 21
 URL      : https://launchpad.net/subunit/trunk/1.1.0/+download/subunit-1.1.0.tar.gz
 Source0  : https://launchpad.net/subunit/trunk/1.1.0/+download/subunit-1.1.0.tar.gz
 Summary  : Subunit test protocol library.
@@ -48,6 +48,7 @@ Summary: dev components for the subunit package.
 Group: Development
 Requires: subunit-lib
 Requires: subunit-bin
+Provides: subunit-devel
 
 %description dev
 dev components for the subunit package.
@@ -64,6 +65,8 @@ lib components for the subunit package.
 %package python
 Summary: python components for the subunit package.
 Group: Default
+Provides: python-subunit
+Provides: python-subunit-python
 
 %description python
 python components for the subunit package.
@@ -79,7 +82,7 @@ make V=1  %{?_smp_mflags}
 %check
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
-export no_proxy=intel.com,localhost
+export no_proxy=localhost
 make check || :
 
 %install
@@ -94,20 +97,20 @@ rm -rf %{buildroot}
 
 %files bin
 %defattr(-,root,root,-)
-%exclude /usr/bin/subunit-1to2
-%exclude /usr/bin/subunit-2to1
-%exclude /usr/bin/subunit-filter
-%exclude /usr/bin/subunit-ls
-%exclude /usr/bin/subunit-notify
-%exclude /usr/bin/subunit-output
-%exclude /usr/bin/subunit-stats
-%exclude /usr/bin/subunit-tags
-%exclude /usr/bin/subunit2csv
-%exclude /usr/bin/subunit2gtk
-%exclude /usr/bin/subunit2junitxml
-%exclude /usr/bin/subunit2pyunit
-%exclude /usr/bin/tap2subunit
+/usr/bin/subunit-1to2
+/usr/bin/subunit-2to1
 /usr/bin/subunit-diff
+/usr/bin/subunit-filter
+/usr/bin/subunit-ls
+/usr/bin/subunit-notify
+/usr/bin/subunit-output
+/usr/bin/subunit-stats
+/usr/bin/subunit-tags
+/usr/bin/subunit2csv
+/usr/bin/subunit2gtk
+/usr/bin/subunit2junitxml
+/usr/bin/subunit2pyunit
+/usr/bin/tap2subunit
 
 %files dev
 %defattr(-,root,root,-)
@@ -122,33 +125,4 @@ rm -rf %{buildroot}
 
 %files python
 %defattr(-,root,root,-)
-%exclude /usr/lib/python2.7/site-packages/subunit/__init__.py
-%exclude /usr/lib/python2.7/site-packages/subunit/__init__.pyc
-%exclude /usr/lib/python2.7/site-packages/subunit/__init__.pyo
-%exclude /usr/lib/python2.7/site-packages/subunit/_output.py
-%exclude /usr/lib/python2.7/site-packages/subunit/_output.pyc
-%exclude /usr/lib/python2.7/site-packages/subunit/_output.pyo
-%exclude /usr/lib/python2.7/site-packages/subunit/chunked.py
-%exclude /usr/lib/python2.7/site-packages/subunit/chunked.pyc
-%exclude /usr/lib/python2.7/site-packages/subunit/chunked.pyo
-%exclude /usr/lib/python2.7/site-packages/subunit/details.py
-%exclude /usr/lib/python2.7/site-packages/subunit/details.pyc
-%exclude /usr/lib/python2.7/site-packages/subunit/details.pyo
-%exclude /usr/lib/python2.7/site-packages/subunit/filters.py
-%exclude /usr/lib/python2.7/site-packages/subunit/filters.pyc
-%exclude /usr/lib/python2.7/site-packages/subunit/filters.pyo
-%exclude /usr/lib/python2.7/site-packages/subunit/iso8601.py
-%exclude /usr/lib/python2.7/site-packages/subunit/iso8601.pyc
-%exclude /usr/lib/python2.7/site-packages/subunit/iso8601.pyo
-%exclude /usr/lib/python2.7/site-packages/subunit/progress_model.py
-%exclude /usr/lib/python2.7/site-packages/subunit/progress_model.pyc
-%exclude /usr/lib/python2.7/site-packages/subunit/progress_model.pyo
-%exclude /usr/lib/python2.7/site-packages/subunit/run.py
-%exclude /usr/lib/python2.7/site-packages/subunit/run.pyc
-%exclude /usr/lib/python2.7/site-packages/subunit/run.pyo
-%exclude /usr/lib/python2.7/site-packages/subunit/test_results.py
-%exclude /usr/lib/python2.7/site-packages/subunit/test_results.pyc
-%exclude /usr/lib/python2.7/site-packages/subunit/test_results.pyo
-%exclude /usr/lib/python2.7/site-packages/subunit/v2.py
-%exclude /usr/lib/python2.7/site-packages/subunit/v2.pyc
-%exclude /usr/lib/python2.7/site-packages/subunit/v2.pyo
+/usr/lib/python*/*
