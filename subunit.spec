@@ -4,7 +4,7 @@
 #
 Name     : subunit
 Version  : 1.1.0
-Release  : 21
+Release  : 22
 URL      : https://launchpad.net/subunit/trunk/1.1.0/+download/subunit-1.1.0.tar.gz
 Source0  : https://launchpad.net/subunit/trunk/1.1.0/+download/subunit-1.1.0.tar.gz
 Summary  : Subunit test protocol library.
