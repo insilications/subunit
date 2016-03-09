@@ -4,7 +4,7 @@
 #
 Name     : subunit
 Version  : 1.2.0
-Release  : 24
+Release  : 25
 URL      : https://launchpad.net/subunit/trunk/1.2/+download/subunit-1.2.0.tar.gz
 Source0  : https://launchpad.net/subunit/trunk/1.2/+download/subunit-1.2.0.tar.gz
 Summary  : Subunit test protocol library.
@@ -14,15 +14,12 @@ Requires: subunit-bin
 Requires: subunit-python
 Requires: subunit-lib
 BuildRequires : extras
-BuildRequires : fixtures-python
 BuildRequires : iso8601
-BuildRequires : linecache2-python
 BuildRequires : pbr
 BuildRequires : pip
 BuildRequires : pkgconfig(check)
 BuildRequires : pkgconfig(cppunit)
 BuildRequires : python-dev
-BuildRequires : python-mimeparse
 BuildRequires : python3-dev
 BuildRequires : setuptools
 BuildRequires : testrepository
@@ -30,8 +27,6 @@ BuildRequires : testresources
 BuildRequires : testscenarios
 BuildRequires : testtools
 BuildRequires : traceback2
-BuildRequires : unittest2
-BuildRequires : unittest2-python
 
 %description
 #  subunit C++ bindings.
@@ -89,12 +84,6 @@ python components for the subunit package.
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 
-%check
-export http_proxy=http://127.0.0.1:9/
-export https_proxy=http://127.0.0.1:9/
-export no_proxy=localhost
-make check || :
-
 %install
 rm -rf %{buildroot}
 %make_install
@@ -140,6 +129,8 @@ rm -rf %{buildroot}
 %exclude /usr/lib/python2.7/site-packages/subunit/__init__.pyc
 %exclude /usr/lib/python2.7/site-packages/subunit/_output.py
 %exclude /usr/lib/python2.7/site-packages/subunit/_output.pyc
+%exclude /usr/lib/python2.7/site-packages/subunit/_to_disk.py
+%exclude /usr/lib/python2.7/site-packages/subunit/_to_disk.pyc
 %exclude /usr/lib/python2.7/site-packages/subunit/chunked.py
 %exclude /usr/lib/python2.7/site-packages/subunit/chunked.pyc
 %exclude /usr/lib/python2.7/site-packages/subunit/details.py
@@ -156,4 +147,3 @@ rm -rf %{buildroot}
 %exclude /usr/lib/python2.7/site-packages/subunit/test_results.pyc
 %exclude /usr/lib/python2.7/site-packages/subunit/v2.py
 %exclude /usr/lib/python2.7/site-packages/subunit/v2.pyc
-/usr/lib/python*/*

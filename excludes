@@ -30,6 +30,8 @@
 /usr/lib/python2.7/site-packages/subunit/v2.py
 /usr/lib/python2.7/site-packages/subunit/v2.pyc
 /usr/lib/python2.7/site-packages/subunit/v2.pyo
+/usr/lib/python2.7/site-packages/subunit/_to_disk.py
+/usr/lib/python2.7/site-packages/subunit/_to_disk.pyc
 /usr/lib/perl5/5.20.0/x86_64-linux/perllocal.pod
 /usr/bin/subunit-1to2
 /usr/bin/subunit2csv
