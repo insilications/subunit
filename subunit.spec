@@ -4,7 +4,7 @@
 #
 Name     : subunit
 Version  : 1.2.0
-Release  : 27
+Release  : 28
 URL      : https://launchpad.net/subunit/trunk/1.2/+download/subunit-1.2.0.tar.gz
 Source0  : https://launchpad.net/subunit/trunk/1.2/+download/subunit-1.2.0.tar.gz
 Summary  : Subunit test protocol library.
@@ -90,9 +90,9 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/site_perl/5.22.0/Subunit.pm
-/usr/lib/perl5/site_perl/5.22.0/Subunit/Diff.pm
-/usr/lib/perl5/site_perl/5.22.0/x86_64-linux/auto/Subunit/.packlist
+/usr/lib/perl5/site_perl/5.24.0/Subunit.pm
+/usr/lib/perl5/site_perl/5.24.0/Subunit/Diff.pm
+/usr/lib/perl5/site_perl/5.24.0/x86_64-linux/auto/Subunit/.packlist
 
 %files bin
 %defattr(-,root,root,-)

@@ -1,0 +1,9 @@
+libcppunit_subunit.so.0:_ZN7CppUnit27SubunitTestProgressListener10addFailureERKNS_11TestFailureE
+libcppunit_subunit.so.0:_ZN7CppUnit27SubunitTestProgressListener7endTestEPNS_4TestE
+libcppunit_subunit.so.0:_ZN7CppUnit27SubunitTestProgressListener9startTestEPNS_4TestE
+libsubunit.so.0:subunit_progress
+libsubunit.so.0:subunit_test_error
+libsubunit.so.0:subunit_test_fail
+libsubunit.so.0:subunit_test_pass
+libsubunit.so.0:subunit_test_skip
+libsubunit.so.0:subunit_test_start
