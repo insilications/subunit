@@ -6,7 +6,7 @@
 #
 Name     : subunit
 Version  : 1.2.0
-Release  : 34
+Release  : 36
 URL      : https://launchpad.net/subunit/trunk/1.2/+download/subunit-1.2.0.tar.gz
 Source0  : https://launchpad.net/subunit/trunk/1.2/+download/subunit-1.2.0.tar.gz
 Source99 : https://launchpad.net/subunit/trunk/1.2/+download/subunit-1.2.0.tar.gz.asc
@@ -84,13 +84,16 @@ python components for the subunit package.
 %setup -q -n subunit-1.2.0
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1491709600
+export SOURCE_DATE_EPOCH=1492961417
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1491709600
+export SOURCE_DATE_EPOCH=1492961417
 rm -rf %{buildroot}
 %make_install
 
