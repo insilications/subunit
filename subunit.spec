@@ -6,7 +6,7 @@
 #
 Name     : subunit
 Version  : 1.2.0
-Release  : 37
+Release  : 38
 URL      : https://launchpad.net/subunit/trunk/1.2/+download/subunit-1.2.0.tar.gz
 Source0  : https://launchpad.net/subunit/trunk/1.2/+download/subunit-1.2.0.tar.gz
 Source99 : https://launchpad.net/subunit/trunk/1.2/+download/subunit-1.2.0.tar.gz.asc
@@ -88,20 +88,20 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1492961417
+export SOURCE_DATE_EPOCH=1500744289
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1492961417
+export SOURCE_DATE_EPOCH=1500744289
 rm -rf %{buildroot}
 %make_install
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/site_perl/5.24.0/Subunit.pm
-/usr/lib/perl5/site_perl/5.24.0/Subunit/Diff.pm
-/usr/lib/perl5/site_perl/5.24.0/x86_64-linux-thread-multi/auto/Subunit/.packlist
+/usr/lib/perl5/site_perl/5.26.0/Subunit.pm
+/usr/lib/perl5/site_perl/5.26.0/Subunit/Diff.pm
+/usr/lib/perl5/site_perl/5.26.0/x86_64-linux-thread-multi/auto/Subunit/.packlist
 
 %files bin
 %defattr(-,root,root,-)
