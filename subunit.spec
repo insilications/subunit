@@ -6,7 +6,7 @@
 #
 Name     : subunit
 Version  : 1.2.0
-Release  : 38
+Release  : 39
 URL      : https://launchpad.net/subunit/trunk/1.2/+download/subunit-1.2.0.tar.gz
 Source0  : https://launchpad.net/subunit/trunk/1.2/+download/subunit-1.2.0.tar.gz
 Source99 : https://launchpad.net/subunit/trunk/1.2/+download/subunit-1.2.0.tar.gz.asc
@@ -14,7 +14,7 @@ Summary  : Subunit test protocol library.
 Group    : Development/Tools
 License  : Apache-2.0 MIT
 Requires: subunit-bin
-Requires: subunit-python
+Requires: subunit-legacypython
 Requires: subunit-lib
 BuildRequires : extras
 BuildRequires : iso8601
@@ -64,20 +64,20 @@ Provides: subunit-devel
 dev components for the subunit package.
 
 
+%package legacypython
+Summary: legacypython components for the subunit package.
+Group: Default
+
+%description legacypython
+legacypython components for the subunit package.
+
+
 %package lib
 Summary: lib components for the subunit package.
 Group: Libraries
 
 %description lib
 lib components for the subunit package.
-
-
-%package python
-Summary: python components for the subunit package.
-Group: Default
-
-%description python
-python components for the subunit package.
 
 
 %prep
@@ -88,12 +88,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1500744289
+export SOURCE_DATE_EPOCH=1505072040
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1500744289
+export SOURCE_DATE_EPOCH=1505072040
 rm -rf %{buildroot}
 %make_install
 
@@ -130,14 +130,7 @@ rm -rf %{buildroot}
 /usr/lib64/pkgconfig/libcppunit_subunit.pc
 /usr/lib64/pkgconfig/libsubunit.pc
 
-%files lib
-%defattr(-,root,root,-)
-/usr/lib64/libcppunit_subunit.so.0
-/usr/lib64/libcppunit_subunit.so.0.0.0
-/usr/lib64/libsubunit.so.0
-/usr/lib64/libsubunit.so.0.0.0
-
-%files python
+%files legacypython
 %defattr(-,root,root,-)
 %exclude /usr/lib/python2.7/site-packages/subunit/__init__.py
 %exclude /usr/lib/python2.7/site-packages/subunit/__init__.pyc
@@ -161,3 +154,10 @@ rm -rf %{buildroot}
 %exclude /usr/lib/python2.7/site-packages/subunit/test_results.pyc
 %exclude /usr/lib/python2.7/site-packages/subunit/v2.py
 %exclude /usr/lib/python2.7/site-packages/subunit/v2.pyc
+
+%files lib
+%defattr(-,root,root,-)
+/usr/lib64/libcppunit_subunit.so.0
+/usr/lib64/libcppunit_subunit.so.0.0.0
+/usr/lib64/libsubunit.so.0
+/usr/lib64/libsubunit.so.0.0.0
