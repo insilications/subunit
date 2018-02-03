@@ -6,7 +6,7 @@
 #
 Name     : subunit
 Version  : 1.2.0
-Release  : 43
+Release  : 44
 URL      : https://launchpad.net/subunit/trunk/1.2/+download/subunit-1.2.0.tar.gz
 Source0  : https://launchpad.net/subunit/trunk/1.2/+download/subunit-1.2.0.tar.gz
 Source99 : https://launchpad.net/subunit/trunk/1.2/+download/subunit-1.2.0.tar.gz.asc
@@ -14,8 +14,9 @@ Summary  : Subunit test protocol library.
 Group    : Development/Tools
 License  : Apache-2.0 MIT
 Requires: subunit-bin
-Requires: subunit-legacypython
+Requires: subunit-python3
 Requires: subunit-lib
+Requires: subunit-python
 BuildRequires : extras
 BuildRequires : iso8601
 BuildRequires : pbr
@@ -64,20 +65,30 @@ Provides: subunit-devel
 dev components for the subunit package.
 
 
-%package legacypython
-Summary: legacypython components for the subunit package.
-Group: Default
-
-%description legacypython
-legacypython components for the subunit package.
-
-
 %package lib
 Summary: lib components for the subunit package.
 Group: Libraries
 
 %description lib
 lib components for the subunit package.
+
+
+%package python
+Summary: python components for the subunit package.
+Group: Default
+Requires: subunit-python3
+
+%description python
+python components for the subunit package.
+
+
+%package python3
+Summary: python3 components for the subunit package.
+Group: Default
+Requires: python3-core
+
+%description python3
+python3 components for the subunit package.
 
 
 %prep
@@ -88,12 +99,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1506189151
+export SOURCE_DATE_EPOCH=1517682843
 %configure --disable-static
-make V=1  %{?_smp_mflags}
+make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1506189151
+export SOURCE_DATE_EPOCH=1517682843
 rm -rf %{buildroot}
 %make_install
 
@@ -130,34 +141,16 @@ rm -rf %{buildroot}
 /usr/lib64/pkgconfig/libcppunit_subunit.pc
 /usr/lib64/pkgconfig/libsubunit.pc
 
-%files legacypython
-%defattr(-,root,root,-)
-%exclude /usr/lib/python2.7/site-packages/subunit/__init__.py
-%exclude /usr/lib/python2.7/site-packages/subunit/__init__.pyc
-%exclude /usr/lib/python2.7/site-packages/subunit/_output.py
-%exclude /usr/lib/python2.7/site-packages/subunit/_output.pyc
-%exclude /usr/lib/python2.7/site-packages/subunit/_to_disk.py
-%exclude /usr/lib/python2.7/site-packages/subunit/_to_disk.pyc
-%exclude /usr/lib/python2.7/site-packages/subunit/chunked.py
-%exclude /usr/lib/python2.7/site-packages/subunit/chunked.pyc
-%exclude /usr/lib/python2.7/site-packages/subunit/details.py
-%exclude /usr/lib/python2.7/site-packages/subunit/details.pyc
-%exclude /usr/lib/python2.7/site-packages/subunit/filters.py
-%exclude /usr/lib/python2.7/site-packages/subunit/filters.pyc
-%exclude /usr/lib/python2.7/site-packages/subunit/iso8601.py
-%exclude /usr/lib/python2.7/site-packages/subunit/iso8601.pyc
-%exclude /usr/lib/python2.7/site-packages/subunit/progress_model.py
-%exclude /usr/lib/python2.7/site-packages/subunit/progress_model.pyc
-%exclude /usr/lib/python2.7/site-packages/subunit/run.py
-%exclude /usr/lib/python2.7/site-packages/subunit/run.pyc
-%exclude /usr/lib/python2.7/site-packages/subunit/test_results.py
-%exclude /usr/lib/python2.7/site-packages/subunit/test_results.pyc
-%exclude /usr/lib/python2.7/site-packages/subunit/v2.py
-%exclude /usr/lib/python2.7/site-packages/subunit/v2.pyc
-
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libcppunit_subunit.so.0
 /usr/lib64/libcppunit_subunit.so.0.0.0
 /usr/lib64/libsubunit.so.0
 /usr/lib64/libsubunit.so.0.0.0
+
+%files python
+%defattr(-,root,root,-)
+
+%files python3
+%defattr(-,root,root,-)
+/usr/lib/python3*/*
