@@ -6,7 +6,7 @@
 #
 Name     : subunit
 Version  : 1.2.0
-Release  : 44
+Release  : 45
 URL      : https://launchpad.net/subunit/trunk/1.2/+download/subunit-1.2.0.tar.gz
 Source0  : https://launchpad.net/subunit/trunk/1.2/+download/subunit-1.2.0.tar.gz
 Source99 : https://launchpad.net/subunit/trunk/1.2/+download/subunit-1.2.0.tar.gz.asc
@@ -99,12 +99,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1517682843
+export SOURCE_DATE_EPOCH=1517705059
 %configure --disable-static
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1517682843
+export SOURCE_DATE_EPOCH=1517705059
 rm -rf %{buildroot}
 %make_install
 
@@ -153,4 +153,25 @@ rm -rf %{buildroot}
 
 %files python3
 %defattr(-,root,root,-)
-/usr/lib/python3*/*
+%exclude /usr/lib/python3.6/site-packages/subunit/__init__.py
+%exclude /usr/lib/python3.6/site-packages/subunit/__pycache__/__init__.cpython-36.pyc
+%exclude /usr/lib/python3.6/site-packages/subunit/__pycache__/_output.cpython-36.pyc
+%exclude /usr/lib/python3.6/site-packages/subunit/__pycache__/_to_disk.cpython-36.pyc
+%exclude /usr/lib/python3.6/site-packages/subunit/__pycache__/chunked.cpython-36.pyc
+%exclude /usr/lib/python3.6/site-packages/subunit/__pycache__/details.cpython-36.pyc
+%exclude /usr/lib/python3.6/site-packages/subunit/__pycache__/filters.cpython-36.pyc
+%exclude /usr/lib/python3.6/site-packages/subunit/__pycache__/iso8601.cpython-36.pyc
+%exclude /usr/lib/python3.6/site-packages/subunit/__pycache__/progress_model.cpython-36.pyc
+%exclude /usr/lib/python3.6/site-packages/subunit/__pycache__/run.cpython-36.pyc
+%exclude /usr/lib/python3.6/site-packages/subunit/__pycache__/test_results.cpython-36.pyc
+%exclude /usr/lib/python3.6/site-packages/subunit/__pycache__/v2.cpython-36.pyc
+%exclude /usr/lib/python3.6/site-packages/subunit/_output.py
+%exclude /usr/lib/python3.6/site-packages/subunit/_to_disk.py
+%exclude /usr/lib/python3.6/site-packages/subunit/chunked.py
+%exclude /usr/lib/python3.6/site-packages/subunit/details.py
+%exclude /usr/lib/python3.6/site-packages/subunit/filters.py
+%exclude /usr/lib/python3.6/site-packages/subunit/iso8601.py
+%exclude /usr/lib/python3.6/site-packages/subunit/progress_model.py
+%exclude /usr/lib/python3.6/site-packages/subunit/run.py
+%exclude /usr/lib/python3.6/site-packages/subunit/test_results.py
+%exclude /usr/lib/python3.6/site-packages/subunit/v2.py
