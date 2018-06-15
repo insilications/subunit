@@ -23,7 +23,7 @@ BuildRequires : pbr
 BuildRequires : pip
 BuildRequires : pkgconfig(check)
 BuildRequires : pkgconfig(cppunit)
-BuildRequires : python-dev
+
 BuildRequires : python3-dev
 BuildRequires : setuptools
 BuildRequires : testrepository
