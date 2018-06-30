@@ -6,7 +6,7 @@
 #
 Name     : subunit
 Version  : 1.2.0
-Release  : 50
+Release  : 51
 URL      : https://launchpad.net/subunit/trunk/1.2/+download/subunit-1.2.0.tar.gz
 Source0  : https://launchpad.net/subunit/trunk/1.2/+download/subunit-1.2.0.tar.gz
 Source99 : https://launchpad.net/subunit/trunk/1.2/+download/subunit-1.2.0.tar.gz.asc
@@ -16,6 +16,7 @@ License  : Apache-2.0 MIT
 Requires: subunit-bin
 Requires: subunit-python3
 Requires: subunit-lib
+Requires: subunit-license
 Requires: subunit-python
 BuildRequires : extras
 BuildRequires : iso8601
@@ -23,7 +24,6 @@ BuildRequires : pbr
 BuildRequires : pip
 BuildRequires : pkgconfig(check)
 BuildRequires : pkgconfig(cppunit)
-
 BuildRequires : python3-dev
 BuildRequires : setuptools
 BuildRequires : testrepository
@@ -49,6 +49,7 @@ BuildRequires : traceback2
 %package bin
 Summary: bin components for the subunit package.
 Group: Binaries
+Requires: subunit-license
 
 %description bin
 bin components for the subunit package.
@@ -65,12 +66,29 @@ Provides: subunit-devel
 dev components for the subunit package.
 
 
+%package doc
+Summary: doc components for the subunit package.
+Group: Documentation
+
+%description doc
+doc components for the subunit package.
+
+
 %package lib
 Summary: lib components for the subunit package.
 Group: Libraries
+Requires: subunit-license
 
 %description lib
 lib components for the subunit package.
+
+
+%package license
+Summary: license components for the subunit package.
+Group: Default
+
+%description license
+license components for the subunit package.
 
 
 %package python
@@ -99,13 +117,16 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1517705059
+export SOURCE_DATE_EPOCH=1530328689
 %configure --disable-static
 make  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1517705059
+export SOURCE_DATE_EPOCH=1530328689
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/doc/subunit
+cp Apache-2.0 %{buildroot}/usr/share/doc/subunit/Apache-2.0
+cp python/iso8601/LICENSE %{buildroot}/usr/share/doc/subunit/python_iso8601_LICENSE
 %make_install
 
 %files
@@ -141,6 +162,10 @@ rm -rf %{buildroot}
 /usr/lib64/pkgconfig/libcppunit_subunit.pc
 /usr/lib64/pkgconfig/libsubunit.pc
 
+%files doc
+%defattr(0644,root,root,0755)
+%doc /usr/share/doc/subunit/*
+
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libcppunit_subunit.so.0
@@ -148,30 +173,24 @@ rm -rf %{buildroot}
 /usr/lib64/libsubunit.so.0
 /usr/lib64/libsubunit.so.0.0.0
 
+%files license
+%defattr(-,root,root,-)
+/usr/share/doc/subunit/python_iso8601_LICENSE
+
 %files python
 %defattr(-,root,root,-)
 
 %files python3
 %defattr(-,root,root,-)
-%exclude /usr/lib/python3.6/site-packages/subunit/__init__.py
-%exclude /usr/lib/python3.6/site-packages/subunit/__pycache__/__init__.cpython-36.pyc
-%exclude /usr/lib/python3.6/site-packages/subunit/__pycache__/_output.cpython-36.pyc
-%exclude /usr/lib/python3.6/site-packages/subunit/__pycache__/_to_disk.cpython-36.pyc
-%exclude /usr/lib/python3.6/site-packages/subunit/__pycache__/chunked.cpython-36.pyc
-%exclude /usr/lib/python3.6/site-packages/subunit/__pycache__/details.cpython-36.pyc
-%exclude /usr/lib/python3.6/site-packages/subunit/__pycache__/filters.cpython-36.pyc
-%exclude /usr/lib/python3.6/site-packages/subunit/__pycache__/iso8601.cpython-36.pyc
-%exclude /usr/lib/python3.6/site-packages/subunit/__pycache__/progress_model.cpython-36.pyc
-%exclude /usr/lib/python3.6/site-packages/subunit/__pycache__/run.cpython-36.pyc
-%exclude /usr/lib/python3.6/site-packages/subunit/__pycache__/test_results.cpython-36.pyc
-%exclude /usr/lib/python3.6/site-packages/subunit/__pycache__/v2.cpython-36.pyc
-%exclude /usr/lib/python3.6/site-packages/subunit/_output.py
-%exclude /usr/lib/python3.6/site-packages/subunit/_to_disk.py
-%exclude /usr/lib/python3.6/site-packages/subunit/chunked.py
-%exclude /usr/lib/python3.6/site-packages/subunit/details.py
-%exclude /usr/lib/python3.6/site-packages/subunit/filters.py
-%exclude /usr/lib/python3.6/site-packages/subunit/iso8601.py
-%exclude /usr/lib/python3.6/site-packages/subunit/progress_model.py
-%exclude /usr/lib/python3.6/site-packages/subunit/run.py
-%exclude /usr/lib/python3.6/site-packages/subunit/test_results.py
-%exclude /usr/lib/python3.6/site-packages/subunit/v2.py
+%exclude /usr/lib/python3.7/site-packages/subunit/__init__.py
+%exclude /usr/lib/python3.7/site-packages/subunit/_output.py
+%exclude /usr/lib/python3.7/site-packages/subunit/_to_disk.py
+%exclude /usr/lib/python3.7/site-packages/subunit/chunked.py
+%exclude /usr/lib/python3.7/site-packages/subunit/details.py
+%exclude /usr/lib/python3.7/site-packages/subunit/filters.py
+%exclude /usr/lib/python3.7/site-packages/subunit/iso8601.py
+%exclude /usr/lib/python3.7/site-packages/subunit/progress_model.py
+%exclude /usr/lib/python3.7/site-packages/subunit/run.py
+%exclude /usr/lib/python3.7/site-packages/subunit/test_results.py
+%exclude /usr/lib/python3.7/site-packages/subunit/v2.py
+/usr/lib/python3*/*
