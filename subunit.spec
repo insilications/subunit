@@ -6,26 +6,23 @@
 #
 Name     : subunit
 Version  : 1.2.0
-Release  : 55
+Release  : 56
 URL      : https://launchpad.net/subunit/trunk/1.2/+download/subunit-1.2.0.tar.gz
 Source0  : https://launchpad.net/subunit/trunk/1.2/+download/subunit-1.2.0.tar.gz
 Source99 : https://launchpad.net/subunit/trunk/1.2/+download/subunit-1.2.0.tar.gz.asc
 Summary  : Subunit test protocol library.
 Group    : Development/Tools
 License  : Apache-2.0 MIT
-Requires: subunit-bin
-Requires: subunit-python3
-Requires: subunit-lib
-Requires: subunit-license
-Requires: subunit-python
+Requires: subunit-bin = %{version}-%{release}
+Requires: subunit-lib = %{version}-%{release}
+Requires: subunit-license = %{version}-%{release}
+Requires: subunit-python = %{version}-%{release}
+Requires: subunit-python3 = %{version}-%{release}
+BuildRequires : buildreq-distutils3
 BuildRequires : extras
 BuildRequires : iso8601
-BuildRequires : pbr
-BuildRequires : pip
 BuildRequires : pkgconfig(check)
 BuildRequires : pkgconfig(cppunit)
-BuildRequires : python3-dev
-BuildRequires : setuptools
 BuildRequires : testrepository
 BuildRequires : testresources
 BuildRequires : testscenarios
@@ -49,7 +46,7 @@ BuildRequires : traceback2
 %package bin
 Summary: bin components for the subunit package.
 Group: Binaries
-Requires: subunit-license
+Requires: subunit-license = %{version}-%{release}
 
 %description bin
 bin components for the subunit package.
@@ -58,26 +55,18 @@ bin components for the subunit package.
 %package dev
 Summary: dev components for the subunit package.
 Group: Development
-Requires: subunit-lib
-Requires: subunit-bin
-Provides: subunit-devel
+Requires: subunit-lib = %{version}-%{release}
+Requires: subunit-bin = %{version}-%{release}
+Provides: subunit-devel = %{version}-%{release}
 
 %description dev
 dev components for the subunit package.
 
 
-%package doc
-Summary: doc components for the subunit package.
-Group: Documentation
-
-%description doc
-doc components for the subunit package.
-
-
 %package lib
 Summary: lib components for the subunit package.
 Group: Libraries
-Requires: subunit-license
+Requires: subunit-license = %{version}-%{release}
 
 %description lib
 lib components for the subunit package.
@@ -94,7 +83,7 @@ license components for the subunit package.
 %package python
 Summary: python components for the subunit package.
 Group: Default
-Requires: subunit-python3
+Requires: subunit-python3 = %{version}-%{release}
 
 %description python
 python components for the subunit package.
@@ -117,23 +106,23 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1530329584
+export SOURCE_DATE_EPOCH=1539989701
 %configure --disable-static
-make  %{?_smp_mflags}
+make  %{?_smp_mflags} INSTALLDIRS=vendor
 
 %install
-export SOURCE_DATE_EPOCH=1530329584
+export SOURCE_DATE_EPOCH=1539989701
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/subunit
-cp Apache-2.0 %{buildroot}/usr/share/doc/subunit/Apache-2.0
-cp python/iso8601/LICENSE %{buildroot}/usr/share/doc/subunit/python_iso8601_LICENSE
+mkdir -p %{buildroot}/usr/share/package-licenses/subunit
+cp Apache-2.0 %{buildroot}/usr/share/package-licenses/subunit/Apache-2.0
+cp python/iso8601/LICENSE %{buildroot}/usr/share/package-licenses/subunit/python_iso8601_LICENSE
 %make_install
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/site_perl/5.26.1/Subunit.pm
-/usr/lib/perl5/site_perl/5.26.1/Subunit/Diff.pm
-/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/auto/Subunit/.packlist
+/usr/lib/perl5/vendor_perl/5.26.1/Subunit.pm
+/usr/lib/perl5/vendor_perl/5.26.1/Subunit/Diff.pm
+/usr/lib/perl5/vendor_perl/5.26.1/x86_64-linux-thread-multi/auto/Subunit/.packlist
 
 %files bin
 %defattr(-,root,root,-)
@@ -162,10 +151,6 @@ cp python/iso8601/LICENSE %{buildroot}/usr/share/doc/subunit/python_iso8601_LICE
 /usr/lib64/pkgconfig/libcppunit_subunit.pc
 /usr/lib64/pkgconfig/libsubunit.pc
 
-%files doc
-%defattr(0644,root,root,0755)
-%doc /usr/share/doc/subunit/*
-
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libcppunit_subunit.so.0
@@ -174,8 +159,9 @@ cp python/iso8601/LICENSE %{buildroot}/usr/share/doc/subunit/python_iso8601_LICE
 /usr/lib64/libsubunit.so.0.0.0
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/subunit/python_iso8601_LICENSE
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/subunit/Apache-2.0
+/usr/share/package-licenses/subunit/python_iso8601_LICENSE
 
 %files python
 %defattr(-,root,root,-)
