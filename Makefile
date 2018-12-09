@@ -1,5 +1,5 @@
 PKG_NAME := subunit
-URL = https://launchpad.net/subunit/trunk/1.2/+download/subunit-1.2.0.tar.gz
+URL = https://github.com/testing-cabal/subunit/archive/1.3.0.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
