@@ -4,7 +4,7 @@
 #
 Name     : subunit
 Version  : 1.3.0
-Release  : 57
+Release  : 58
 URL      : https://github.com/testing-cabal/subunit/archive/1.3.0.tar.gz
 Source0  : https://github.com/testing-cabal/subunit/archive/1.3.0.tar.gz
 Summary  : Subunit test protocol library.
@@ -54,6 +54,7 @@ Group: Development
 Requires: subunit-lib = %{version}-%{release}
 Requires: subunit-bin = %{version}-%{release}
 Provides: subunit-devel = %{version}-%{release}
+Requires: subunit = %{version}-%{release}
 
 %description dev
 dev components for the subunit package.
@@ -102,12 +103,13 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1544386990
+export SOURCE_DATE_EPOCH=1556390140
+export LDFLAGS="${LDFLAGS} -fno-lto"
 %reconfigure --disable-static
 make  %{?_smp_mflags} INSTALLDIRS=vendor
 
 %install
-export SOURCE_DATE_EPOCH=1544386990
+export SOURCE_DATE_EPOCH=1556390140
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/subunit
 cp Apache-2.0 %{buildroot}/usr/share/package-licenses/subunit/Apache-2.0
@@ -116,9 +118,9 @@ cp python/iso8601/LICENSE %{buildroot}/usr/share/package-licenses/subunit/python
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.1/Subunit.pm
-/usr/lib/perl5/vendor_perl/5.28.1/Subunit/Diff.pm
-/usr/lib/perl5/vendor_perl/5.28.1/x86_64-linux-thread-multi/auto/Subunit/.packlist
+/usr/lib/perl5/vendor_perl/5.28.2/Subunit.pm
+/usr/lib/perl5/vendor_perl/5.28.2/Subunit/Diff.pm
+/usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/auto/Subunit/.packlist
 
 %files bin
 %defattr(-,root,root,-)
