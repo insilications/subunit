@@ -4,7 +4,7 @@
 #
 Name     : subunit
 Version  : 1.3.0
-Release  : 58
+Release  : 59
 URL      : https://github.com/testing-cabal/subunit/archive/1.3.0.tar.gz
 Source0  : https://github.com/testing-cabal/subunit/archive/1.3.0.tar.gz
 Summary  : Subunit test protocol library.
