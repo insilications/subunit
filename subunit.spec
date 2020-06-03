@@ -4,7 +4,7 @@
 #
 Name     : subunit
 Version  : 1.3.0
-Release  : 63
+Release  : 64
 URL      : https://github.com/testing-cabal/subunit/archive/1.3.0.tar.gz
 Source0  : https://github.com/testing-cabal/subunit/archive/1.3.0.tar.gz
 Summary  : Subunit test protocol library.
@@ -94,17 +94,17 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1584563725
+export SOURCE_DATE_EPOCH=1591145252
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$CFLAGS -fno-lto "
-export FFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
 %reconfigure --disable-static
 make  %{?_smp_mflags}  INSTALLDIRS=vendor
 
 %install
-export SOURCE_DATE_EPOCH=1584563725
+export SOURCE_DATE_EPOCH=1591145252
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/subunit
 cp %{_builddir}/subunit-1.3.0/Apache-2.0 %{buildroot}/usr/share/package-licenses/subunit/2b8b815229aa8a61e483fb4ba0588b8b6c491890
@@ -179,6 +179,6 @@ rm -f %{buildroot}/usr/lib/python3.8/site-packages/subunit/__pycache__/v2.cpytho
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.2/Subunit.pm
-/usr/lib/perl5/vendor_perl/5.30.2/Subunit/Diff.pm
-/usr/lib/perl5/vendor_perl/5.30.2/x86_64-linux-thread-multi/auto/Subunit/.packlist
+/usr/lib/perl5/vendor_perl/5.30.3/Subunit.pm
+/usr/lib/perl5/vendor_perl/5.30.3/Subunit/Diff.pm
+/usr/lib/perl5/vendor_perl/5.30.3/x86_64-linux-thread-multi/auto/Subunit/.packlist
