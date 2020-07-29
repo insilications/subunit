@@ -1,0 +1,1 @@
+rm -rfv %{buildroot}/usr/lib/python3*/site-packages/subunit
